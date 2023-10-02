@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block title %}
+        <title>History Game</title>
+    {% endblock %}
+    <meta charset="utf-8" />
+    <link href="../../static/game/css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="grid-container-win">
+        <div class="grid-item-win-message">
+            Congratulations, you won!
+        </div>
+        <div class="grid-item-sidebar-win-page">
+            <a href="/game">Home</a>
+        </div>
+        <form class="grid-item-play-again" action="" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Play Again" name="selection">
+        </form>
+        <form class="grid-item-back-to-homepage" action="" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Back to Homepage">
+        </form>
+    </div>
+</body>

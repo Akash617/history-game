@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block title %}
+    <title>History Game</title>
+    {% endblock %}
+    <meta charset="utf-8" />
+    <link href="../../static/game/css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="grid-container-home">
+        <div class="grid-item-title">
+            <h1>History Game</h1>
+        </div>
+        <div class="grid-item-sidebar-home">
+            <ul>
+                <li><a href="/game">Home</a></li>
+                <li><a href="/login/logout">Logout</a></li>
+            </ul>
+        </div>
+        <div class="grid-item-home-info">
+            Landing page for the history game!
+            <p>Stats:</p>
+            <ul>
+                <li><strong>Total events:</strong> {{ num_events }}</li>
+                <li><strong>Matches you've played:</strong> {{ num_matches_user }}</li>
+                <li><strong>Your highscore:</strong> {{ user_highscore }}</li>
+                <li><strong>Matches played by everyone:</strong> {{ num_matches_total }}</li>
+                <li><strong>Highest higscore:</strong> {{ highest_highscore }}</li>
+            </ul>
+        </div>
+        <form class="grid-item-start-game" action="" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Start a new game">
+        </form>
+    </div>
+</body>

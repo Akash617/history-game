@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    {% block title %}
+        <title>History Game</title>
+    {% endblock %}
+    <meta charset="utf-8" />
+    <link href="../../static/game/css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="grid-container-lose">
+        <div class="grid-item-lose-message">
+            You lost!
+            You successfully placed {{ num_events }} events!
+        </div>
+        <div class="grid-item-sidebar-lose-page">
+            <a href="/game">Home</a>
+        </div>
+        <div class="grid-item-lose-info">
+            You didn't place this event correctly: <b> {{ event_to_place.name }} </b>
+            </br>
+            The correct date was: <b> {{ event_to_place.date }} </b>
+        </div>
+        <form class="grid-item-play-again" action="" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Play Again" name="selection">
+        </form>
+        <form class="grid-item-back-to-homepage" action="" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Back to Homepage" name="selection">
+        </form>
+    </div>
+</body>

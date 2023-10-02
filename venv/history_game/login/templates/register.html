@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block title %}
+    <title>History Game</title>
+    {% endblock %}
+    <meta charset="utf-8" />
+    <link href="../../static/login/css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="grid-container-register">
+        <div class="grid-item-title">
+            <h1>History Game</h1>
+        </div>
+        <div class="grid-item-sidebar">
+            <a href="/game">Home</a>
+        </div>
+        <form class="switch login-selection" action="" method="post">
+            {% csrf_token %}
+            <button name="switch" type='submit' value='login'> Login </button>
+        </form>
+        <form class="switch register-selection" action="" method="post">
+            {% csrf_token %}
+            <button name="switch" type='submit' value='register'> Register </button>
+        </form>
+        <form class="grid-item-login grid-container-loginbox" action="" method="post">
+            {% csrf_token %}
+            <div class="login-form">
+                <table>
+                    {{ form.as_table }}
+                </table>
+            </div>
+            <input class="login-button" type="submit" value="Register">
+        </form>
+        {% for message in messages %}
+            <div class="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+</body>

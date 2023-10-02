@@ -1,0 +1,78 @@
+.grid-container-login {
+    display: grid;
+    grid-template-columns: 2fr repeat(10, 1fr);
+    grid-template-rows: 2fr repeat(7, 1fr);
+}
+
+.grid-container-register {
+    display: grid;
+    grid-template-columns: 2fr repeat(10, 1fr);
+    grid-template-rows: 2fr repeat(3, 1fr) 2fr 2fr 1fr 1fr;
+}
+
+.grid-item-title {
+    grid-column: 5 / 7;
+    grid-row: 1;
+    justify-self: center;
+}
+
+.grid-item-sidebar {
+    grid-column: 1;
+    grid-row: 1 / 9;
+}
+
+.grid-item-login {
+    grid-column: 4 / 8;
+    grid-row: 5 / span 2;
+    align-items: center;
+    background: #d5f3f6;
+    outline: solid;
+    outline-color: gray;
+}
+
+.grid-container-loginbox {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
+}
+
+button[name^="switch"] {
+    all: unset;
+    justify-self: center;
+}
+
+.switch {
+    display:grid;
+    background: #d5f3f6;
+    outline: solid;
+    outline-color: gray;
+}
+
+.switch:hover {
+    background: #abe8ed;
+}
+
+.login-selection {
+    grid-column: 4 / span 2;
+    grid-row: 4;
+}
+
+.register-selection {
+    grid-column: 6 / span 2;
+    grid-row: 4;
+}
+
+.login-form {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+}
+
+.login-button {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.alert {
+    grid-column: 4 / 8;
+    grid-row: 7;
+}

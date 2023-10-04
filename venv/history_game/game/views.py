@@ -137,10 +137,13 @@ def lost_game(request):
         match = get_object_or_404(Match, pk=request.session["match"])
         num_events = match.event_list.count() - 1
         event_to_place = get_object_or_404(Event, pk=request.session["event_to_place"])
+        event_before, event_after = get_event_before_and_after(match, event_to_place)
 
         context = {
             'num_events': num_events,
             'event_to_place': event_to_place,
+            'event_before': event_before,
+            'event_after': event_after
         }
 
         delete_match_details(request)
@@ -211,3 +214,24 @@ def is_selection_correct(match, event_to_place, selection):
     if event_to_place.date < event_before.date:
         return False
     return True
+
+
+def get_event_before_and_after(match, event_to_place):
+    event_before = None
+    event_after = None
+
+    # Not an optimised way to do this
+    for index, event in enumerate(match.event_list.all()):
+        if event.date > event_to_place.date:
+            if index != 0:
+                event_before = match.event_list.all()[index-1]
+            event_after = match.event_list.all()[index]
+            break
+
+    if not event_before and not event_after:
+        event_before = match.event_list.all().reverse()[0]
+
+    return event_before, event_after
+
+
+

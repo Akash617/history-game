@@ -7,6 +7,7 @@
     {% endblock %}
     <meta charset="utf-8" />
     <link href="../../static/game/css/styles.css" rel="stylesheet" />
+    <script src="../../static/game/scripts/script.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -14,14 +15,42 @@
         <div class="grid-item-lose-message">
             You lost!
             You successfully placed {{ num_events }} events!
+            <br>
+            You didn't place this event correctly: <b> {{ event_to_place.name }} </b>
+            <br>
+            The correct date was: <b> {{ event_to_place.date }} </b>
         </div>
         <div class="grid-item-sidebar-lose-page">
             <a href="/game">Home</a>
         </div>
-        <div class="grid-item-lose-info">
-            You didn't place this event correctly: <b> {{ event_to_place.name }} </b>
-            </br>
-            The correct date was: <b> {{ event_to_place.date }} </b>
+        <div class="grid-item-lose-timeline" onmouseover="updateTimeline({{event_before}}, {{event_after}})">
+            <div class="event-display-before">
+                <b> {{ event_before.date }} </b> - {{ event_before.name }}
+                <span class="tooltip-icon" onmouseover="showTooltip({{event_before.id}})" onmouseout="hideTooltip({{event_before.id}})">
+                    <b class="tooltip-question-mark">
+                        ?
+                    </b>
+                </span>
+                <div class="event-description-tooltip event-description-tooltip-{{ event_before.id }}">
+                    {{ event_before.description }}
+                </div>
+            </div>
+
+            <div class="grid-item-timeline grid-item-timeline-submit">
+                <button type="submit" name="timeline-selection" value="checkbox-{{ event.id }}"> Submit Here </button>
+            </div>
+
+            <div class="event-display-after">
+                <b> {{ event_after.date }} </b> - {{ event_after.name }}
+                <span class="tooltip-icon" onmouseover="showTooltip({{event_after.id}})" onmouseout="hideTooltip({{event_after.id}})">
+                    <b class="tooltip-question-mark">
+                        ?
+                    </b>
+                </span>
+                <div class="event-description-tooltip event-description-tooltip-{{ event_after.id }}">
+                    {{ event_after.description }}
+                </div>
+            </div>
         </div>
         <form class="grid-item-play-again" action="" method="post">
             {% csrf_token %}

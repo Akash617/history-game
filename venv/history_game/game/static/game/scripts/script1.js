@@ -14,11 +14,11 @@ function updateTimeline(event_before, event_after) {
     const losePageEventBefore = document.getElementsByClassName("event-display-before")[0];
     const losePageEventAfter = document.getElementsByClassName("event-display-after")[0];
 
-    if (event_before != 0) {
+    if (event_before == "no") {
         losePageEventBefore.style.display = "none";
     }
 
-    if (event_after != 0) {
+    if (event_after == "no") {
         losePageEventAfter.style.display = "none";
     }
 }

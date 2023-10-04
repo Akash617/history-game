@@ -139,11 +139,22 @@ def lost_game(request):
         event_to_place = get_object_or_404(Event, pk=request.session["event_to_place"])
         event_before, event_after = get_event_before_and_after(match, event_to_place)
 
+        event_before_exists = "no"
+        event_after_exists = "no"
+
+        if event_before:
+            event_before_exists = "yes"
+
+        if event_after:
+            event_after_exists = "yes"
+
         context = {
             'num_events': num_events,
             'event_to_place': event_to_place,
             'event_before': event_before,
-            'event_after': event_after
+            'event_after': event_after,
+            'event_before_exists': event_before_exists,
+            'event_after_exists': event_after_exists
         }
 
         delete_match_details(request)

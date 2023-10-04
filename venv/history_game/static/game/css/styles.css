@@ -146,6 +146,10 @@ button[name="timeline-selection"]:hover {
   background: #ffbf80;
 }
 
+.display-button {
+    pointer-events: none;
+}
+
 
 /* Adds dotted lines around grid items
 div[class^="grid-item"] {

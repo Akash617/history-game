@@ -1,3 +1,14 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+
 .grid-container-home {
     display: grid;
     grid-template-columns: 1fr 3fr 3fr 3fr;
@@ -48,6 +59,10 @@
 .grid-container-timeline {
     display: inline-grid;
     gap: 50px 100px;
+    height: 75vh;
+    overflow-y: scroll;
+    grid-template-rows: repeat(auto-fill, 5vh);
+    border-bottom: solid;
 }
 
 .grid-item-timeline {

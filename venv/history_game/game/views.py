@@ -92,11 +92,13 @@ def play(request):
         match = get_object_or_404(Match, pk=request.session["match"])
         event_to_place, events_left = get_event_to_place(match, request)
         request.session["event_to_place"] = event_to_place.id
+        current_score = match.event_list.all().count() - 1
 
         context = {
             'match': match,
             'new_event': event_to_place,
-            'events_left': events_left.count()
+            'events_left': events_left.count(),
+            'current_score': current_score
         }
 
         return render(request, "game/play.html", context=context)

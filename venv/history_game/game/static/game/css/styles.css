@@ -37,6 +37,7 @@
 
 .grid-item-new-event {
     grid-column: 2 / 5;
+    border-bottom: solid;
 }
 
 .grid-item-timeline-holder {

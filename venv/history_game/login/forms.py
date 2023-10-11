@@ -12,8 +12,6 @@ class RegisterForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput, label="Password")
     password1 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
-    first_name = forms.CharField(max_length=50, required=False)
-    last_name = forms.CharField(max_length=50, required=False)
 
     class Meta:
         model = User
